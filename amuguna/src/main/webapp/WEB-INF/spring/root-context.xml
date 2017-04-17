@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	
+	<bean id="english" class="org.zerock.service.HelloService"></bean>
+	
+	<bean id="koreanMsg" class="org.zerock.service.KoreanMsg"></bean>
+	 
+	<bean id="korean" class="org.zerock.service.KoreanHello">
+	
+	<constructor-arg ref="koreanMsg"> <!--생성자 생성시 잡아주는 방법이다.  -->
+	
+	</constructor-arg>
+	
+	</bean> 
+		
+</beans>
