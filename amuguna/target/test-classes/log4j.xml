@@ -34,7 +34,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="info" />
+		<priority value="debug" /> <!--처음레벨에서는 디버그모드가 낫다.  -->
 		<appender-ref ref="console" />
 	</root>
 	

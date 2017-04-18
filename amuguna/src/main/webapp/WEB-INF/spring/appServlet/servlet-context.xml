@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="org.zerock.web" />
+	<context:component-scan base-package="org.zerock.web" />  <!-- 여기안에 있는 어노테이션은 모두 스프링에 연결되어있다. -->
 	
 	
 	
