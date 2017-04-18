@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!--쿼리문 실행 하는 곳을 만들어준다. package명 +   -->
+ <!--헷갈려서 자바의 네이밍룰을 적용한다.  --> 
+ <mapper namespace="org.zerock.TimeMapper">
+ <select id="getTime" resultType="java.lang.String"> <!-- 자바의 String 형태로 받겠다. -->
+ select now()
+ </select>
+ 
+ </mapper> 

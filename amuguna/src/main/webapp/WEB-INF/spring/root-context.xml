@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!--jar파일은 우리가 만든자료가 아니기떄문에 xml로 써주는 것이 낫다.  -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	<property name="url" value="jdbc:mysql://192.168.0.17:3306/sample_db?useSSL=false"></property>
+	<property name="username" value="bit92"></property>
+	<property name="password" value="bit92"></property> <!-- 서버 한번만 띄우는 세팅  -->
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"></property> <!-- 파일 1. mybatis 설정파일, 파일2. mybatis의 sql설정 -->
+	<property name="configLocation" value="mybatis-config.xml"></property>
+	<property name="mapperLocations" value="mappers/*.xml"></property> <!--이렇게 주면 mapper폴더에있는 모든 xml이 실행된다.  -->
+	</bean>
+	
+	<bean id="sessionTemplete" class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+<!-- 	
+	<bean id="timeDAO" class="org.zerock.persistance.TimeDAO">
+	<property name="session" ref="sessionTemplete"></property>
+	</bean>
+	 -->
+	
+	
+	<bean id="english" class="org.zerock.service.HelloService"></bean>
+	
+	<bean id="koreanMsg" class="org.zerock.service.KoreanMsg"></bean>
+	 
+	<bean id="korean" class="org.zerock.service.KoreanHello">
+	
+	<constructor-arg ref="koreanMsg"> <!--생성자 생성시 잡아주는 방법이다.  -->
+	
+	</constructor-arg>
+	
+	</bean>
+	
+	<context:annotation-config></context:annotation-config> <!--어노테이션을 인식하겠다1  -->
+	<context:component-scan base-package="org.zerock.persistance"></context:component-scan> 
+	<!-- 여기있는 어노테이션은 모두 스프링으로 인식한다.  -->
+		
+</beans>

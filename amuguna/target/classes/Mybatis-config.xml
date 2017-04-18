@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd"> <!--컨트롤 스페이스 태그만들수있는 dtd이다.  -->
+  
+  <configuration>
+  
+<!--   <mappers>
+  <mapper resource="mappers/TimeMapper.xml"/>
+  </mappers>
+   -->
+   
+  </configuration>
